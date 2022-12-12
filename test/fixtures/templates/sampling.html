@@ -1,0 +1,29 @@
+<html>
+    <head>
+        <script>
+            function logData() {
+                $logger.init({
+                    'url': '/api/log',
+                    'flushInterval': 100,
+                    'isInSampling': false,
+                    'samplingRate': 0,
+                    'sendMetrics': true
+                });
+
+                $logger.registerPlugin('plugin-name', function(payload) {
+                    payload.custom = {
+                        'pageName': 'HomePage'
+                    };
+                });
+                $logger.log('Hello, Logging Data!!');
+                console.log('Hello from console.log');
+                console.error('Hello from console.error');
+                console.info('Hello from console.info');
+            }
+        </script>
+        <script src="static/logger.js" onload="logData()"></script>
+    </head>
+    <body>
+        <h1>Hello World!!</h1>
+    </body>
+</html>
